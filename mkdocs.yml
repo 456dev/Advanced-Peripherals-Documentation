@@ -9,6 +9,7 @@ nav:
       - 'How to: report a bug or request a feature': 'guides/how_to_report.md'
       - 'Item and Fluid Filters': 'guides/filters.md'
       - 'Cooldowns and Fuel consumption': 'guides/cooldowns_and_fuel_consumption.md'
+      - 'Storage System Functions': 'guides/storage_system_functions.md'
     - 'Peripherals':
       - 'Chat Box': 'peripherals/chat_box.md'
       - 'Energy Detector': 'peripherals/energy_detector.md'
