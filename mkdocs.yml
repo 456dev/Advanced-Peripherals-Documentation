@@ -140,7 +140,7 @@ plugins:
       enabled: !ENV [CI, false]
   - git-committers:
        repository: IntelligenceModding/Advanced-Peripherals-Documentation
-       branch: "0.7"
+       branch: "0.7-bridges"
        token: !ENV GITHUB_TOKEN
        enabled: !ENV [CI, false]
 
@@ -164,7 +164,7 @@ extra:
 
 repo_url: https://github.com/IntelligenceModding/Advanced-Peripherals-Documentation
 repo_name: IntelligenceModding/Advanced-Peripherals-Documentation
-edit_uri: edit/0.7/docs/
+edit_uri: edit/0.7-bridges/docs/
 
 markdown_extensions:
     - mdx_math
