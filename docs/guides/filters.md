@@ -12,7 +12,7 @@ These can set the item, count, slots, tags, nbt or fingerprint values.
 
 ## Syntax
 
-### Item/Fluid Name and Tag
+### Item/Fluid/Chemical Name and Tag
 
 The item's/fluid's filter name or tag can be specified with the `name` field.
 If this field is not set, the filter will try to search for items with the right nbt values specified in the `nbt` field
@@ -31,6 +31,33 @@ This can be a tag or a name. To filter for tags, place a `#` in front of the nam
     name = "#forge:ores/gold" -- Will search for the gold ore tag, nbt values are ignored
 }
 ```
+
+### Types
+
+!!! success "Added in version 0.8 and 1.21.1-0.7"
+
+Some functions can be used with any type of filter to prevent the same functions with just a different name. These filters are called generic filters.
+They automatically search if the `name` provided is an item, a fluid or a mekanism chemical - in this order. 
+If none could be found, it will return an empty filter with the message `NO_VALID_FILTER_TYPE`.
+
+A type can also be forced using the `type` key.
+Depending on the AP version and the function, the following types can be used: `item`, `fluid` and `chemical`.
+
+```lua
+{
+    name = "minecraft:water"
+    type = "fluid"
+}
+```
+
+The following example would return nil with the message `FLUID_NOT_FOUND` when used in a function.
+```lua
+{
+    name = "minecraft:dirt"
+    type = "fluid"
+}
+```
+
 
 ### Count
 

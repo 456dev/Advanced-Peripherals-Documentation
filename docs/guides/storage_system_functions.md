@@ -561,7 +561,7 @@ You **can** specify filters for the output and input of patterns. If you don't p
 To specify an input or output filter, you need to use an `input`/`output` key in the filters table.
 
 For example 
-```lua
+```lua linenums="1"
 -- Filter for any patterns with sticks as an output
 outputFilter = {
      output = { 
@@ -592,59 +592,22 @@ patterns = bridge.getPatterns()
 
 ---
 
-### isItemCraftable
+### isCraftable
 ```
-isItemCraftable(filter: table) -> boolean
+isCraftable(filter: table) -> boolean
 ```
 
-Returns true if there is a pattern for the provided item or nil if there was an issue with parsing the filter.
+Returns true if there is a pattern for the provided filter or nil if there was an issue with parsing the filter.
+The filter can be an item filter, a chemical filter or a fluid filter. See [filter types](/../guides/filters/#types)
 
 ---
 
-### isItemCrafting
+### isCrafting
 ```
-isItemCrafting(filter: table) -> boolean
-```
-
-Returns true if there is a crafting job running for the provided item or nil if there was an issue with parsing the filter.
-
----
-
-### isFluidCraftable
-```
-isFluidCraftable(filter: table) -> boolean
+isCrafting(filter: table) -> boolean
 ```
 
-Returns true if there is a pattern for the provided fluid or nil if there was an issue with parsing the filter.
-
----
-
-### isFluidCrafting
-```
-isFluidCrafting(filter: table) -> boolean
-```
-
-Returns true if there is a crafting job running for the provided fluid or nil if there was an issue with parsing the filter.
-
----
-
-
-### isChemicalCrafting
-```
-isChemicalCrafting(filter: table) -> boolean
-```
-
-Returns true if there is a pattern for the provided mekanism chemical or nil if there was an issue with parsing the filter.
-
----
-
-### isChemicalCrafting
-```
-isChemicalCrafting(filter: table) -> boolean
-```
-
-Returns true if there is a crafting job running for the provided mekanism chemical or nil if there was an issue with parsing the filter.
-
----
+Returns true if there is a crafting job running for the provided filter or nil if there was an issue with parsing the filter.
+The filter can be an item filter, a chemical filter or a fluid filter. See [filter types](/../guides/filters/#types)
 
 
