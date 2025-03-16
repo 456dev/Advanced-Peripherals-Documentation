@@ -73,10 +73,10 @@ Returns the current sky light level from 0 to 15 (like a daylight sensor).
 
 ---
 
-### getDimensionName
+### getDimension
 
 ```
-getDimensionName() -> string
+getDimension() -> string
 ```
 
 Returns the name of the current dimension (ex. `overworld`, `the_nether` or `the_end`).
@@ -85,7 +85,7 @@ Returns the name of the current dimension (ex. `overworld`, `the_nether` or `the
 local detector = peripheral.find("environmentDetector")
 
 -- e.g. prints "Dimension: the_nether"
-print("Dimension: " .. detector.getDimensionName())
+print("Dimension: " .. detector.getDimension())
 ```
 
 ---
