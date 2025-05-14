@@ -72,6 +72,15 @@ Returns true if the location is successfully saved, or nil and an error message.
 
 ---
 
+### deletePoint
+```
+deletePoint(name: string) -> true | nil, string
+```
+This deletes a point with the given `name`.
+Returns true if the location is successfully deleted, nor nil and an error message.
+
+---
+
 ### distanceToPoint
 ```
 distanceToPoint(name: string) -> number | nil, string
