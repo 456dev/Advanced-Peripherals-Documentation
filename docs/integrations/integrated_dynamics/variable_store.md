@@ -18,13 +18,13 @@ The Variable Store is a block from Integrated Dynamics that can store variables 
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with      | Has events | Introduced in |
 | --------------- | -------------------- | ---------- | ------------- |
 | variableStore   | Variable Store block | No         | 0.7r          |
 
-</center>
+</div>
 
 ---
 

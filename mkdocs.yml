@@ -166,6 +166,8 @@ repo_name: IntelligenceModding/Advanced-Peripherals-Documentation
 edit_uri: edit/0.7/docs/
 
 markdown_extensions:
+    - tables
+    - md_in_html
     - mdx_math
     - def_list
     - attr_list

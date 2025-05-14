@@ -17,13 +17,13 @@ You can retrieve items, craft items, get all items as a list and more.
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | rsBridge        | Refined Storage | No         | 0.3.6b        |
 
-</center>
+</div>
 
 ---
 

@@ -18,13 +18,13 @@ Mana Pools are used to store mana. They are also used to craft items.
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | manaPool        | Mana Pool block | No         | 0.6b          |
 
-</center>
+</div>
 
 ---
 

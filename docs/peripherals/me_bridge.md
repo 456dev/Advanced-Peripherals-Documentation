@@ -17,13 +17,13 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | meBridge        | ME System       | Yes        | 0.3b          |
 
-</center>
+</div>
 
 ---
 

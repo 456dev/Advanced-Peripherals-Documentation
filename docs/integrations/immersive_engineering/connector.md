@@ -18,13 +18,13 @@ The Redstone Wire Connector is a block from Immersive Engineering to connect red
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name   | Interfaces with               | Has events | Introduced in |
 | ----------------- | ----------------------------- | ---------- | ------------- |
 | redstoneConnector | Redstone Wire Connector block | No         | 0.6b          |
 
-</center>
+</div>
 
 ---
 

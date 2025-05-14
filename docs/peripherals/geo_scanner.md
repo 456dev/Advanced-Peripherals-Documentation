@@ -15,13 +15,13 @@ The Geo scanner has a delay between scans, so you must wait until you can scan a
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | geoScanner      | Blocks          | No         | 0.7r          |
 
-</center>
+</div>
 
 ---
 

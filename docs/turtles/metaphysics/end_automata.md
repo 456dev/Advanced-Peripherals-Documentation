@@ -15,13 +15,13 @@ End automata is a turtle with an End Mechanic Soul upgrade. This upgrade has all
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | endAutomata     | World           | No         | 0.7r          |
 
-</center>
+</div>
 
 ---
 

@@ -13,13 +13,13 @@ A [Note Block](https://minecraft.fandom.com/wiki/Note_Block) is a musical block 
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | noteBlock       | Note Block      | No         | 0.7.4r        |
 
-</center>
+</div>
 
 ---
 

@@ -14,13 +14,13 @@ the light level of the block and many more.
 
 ---
 
-<center>
+
 
 | Peripheral Name     | Interfaces with | Has events | Introduced in |
 | ------------------- | --------------- | ---------- | ------------- |
 | environmentDetector | World           | No         | 0.1b          |
 
-</center>
+</div>
 
 ---
 

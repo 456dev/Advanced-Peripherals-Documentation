@@ -18,13 +18,13 @@ A Basin can hold items and fluids for many different crafting recipes.
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | basin           | Basin block     | No         | 0.7.16        |
 
-</center>
+</div>
 
 ---
 
