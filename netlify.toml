@@ -7,7 +7,8 @@
     git config pull.rebase true
     git switch ${BRANCH}
     git commit -m "cache updates" --all
-    git push
+    git pull origin ${BRANCH}
+    git push origin 0.7 --all
     git switch gh-pages
     git pull origin gh-pages
     git switch ${BRANCH}
