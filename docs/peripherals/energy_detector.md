@@ -17,7 +17,7 @@ The Energy Detector can detect energy flow and acts as a resistor. You can defin
 
 ---
 
-
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |

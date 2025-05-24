@@ -14,7 +14,7 @@ the light level of the block and many more.
 
 ---
 
-
+<div class="center-table" markdown>
 
 | Peripheral Name     | Interfaces with | Has events | Introduced in |
 | ------------------- | --------------- | ---------- | ------------- |
