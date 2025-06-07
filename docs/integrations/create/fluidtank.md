@@ -18,13 +18,13 @@ A Fluid Tank is a multiblock structure which can hold fluids. With each block be
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with  | Has events | Introduced in |
 | --------------- | ---------------- | ---------- | ------------- |
 | fluidTank       | Fluid Tank block | No         | 0.7.16        |
 
-</center>
+</div>
 
 ---
 

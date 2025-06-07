@@ -14,13 +14,13 @@ the light level of the block and many more.
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name     | Interfaces with | Has events | Introduced in |
 | ------------------- | --------------- | ---------- | ------------- |
 | environmentDetector | World           | No         | 0.1b          |
 
-</center>
+</div>
 
 ---
 
@@ -73,10 +73,10 @@ Returns the current sky light level from 0 to 15 (like a daylight sensor).
 
 ---
 
-### getDimensionName
+### getDimension
 
 ```
-getDimensionName() -> string
+getDimension() -> string
 ```
 
 Returns the name of the current dimension (ex. `overworld`, `the_nether` or `the_end`).
@@ -85,7 +85,7 @@ Returns the name of the current dimension (ex. `overworld`, `the_nether` or `the
 local detector = peripheral.find("environmentDetector")
 
 -- e.g. prints "Dimension: the_nether"
-print("Dimension: " .. detector.getDimensionName())
+print("Dimension: " .. detector.getDimension())
 ```
 
 ---

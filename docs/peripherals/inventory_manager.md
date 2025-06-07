@@ -16,13 +16,13 @@ The Inventory Manager can communicate with the player's inventory. You need to a
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name  | Interfaces with  | Has events | Introduced in |
 | ---------------- | ---------------- | ---------- | ------------- |
 | inventoryManager | Player Inventory | No         | 0.5b          |
 
-</center>
+</div>
 
 ---
 

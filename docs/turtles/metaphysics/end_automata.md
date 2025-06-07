@@ -15,13 +15,13 @@ End automata is a turtle with an End Mechanic Soul upgrade. This upgrade has all
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | endAutomata     | World           | No         | 0.7r          |
 
-</center>
+</div>
 
 ---
 
@@ -69,6 +69,15 @@ savePoint(name: string) -> true | nil, string
 ```
 This saves the turtle's current location as a warp point with the given `name` which can be teleported to at a future point in time.  
 Returns true if the location is successfully saved, or nil and an error message.
+
+---
+
+### deletePoint
+```
+deletePoint(name: string) -> true | nil, string
+```
+This deletes a point with the given `name`.     
+Returns true if the location is successfully deleted, nor nil and an error message.
 
 ---
 

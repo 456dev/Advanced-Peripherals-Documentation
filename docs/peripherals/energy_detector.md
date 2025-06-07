@@ -17,13 +17,13 @@ The Energy Detector can detect energy flow and acts as a resistor. You can defin
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | energyDetector  | Forge Energy    | No         | 0.4.1b        |
 
-</center>
+</div>
 
 ---
 

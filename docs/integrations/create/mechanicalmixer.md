@@ -18,13 +18,13 @@ A Mechanical Mixer is used in combination with a Basin to process many shapeless
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with        | Has events | Introduced in |
 | --------------- | ---------------------- | ---------- | ------------- |
 | mechanicalMixer | Mechanical Mixer block | No         | 0.7.16        |
 
-</center>
+</div>
 
 ---
 

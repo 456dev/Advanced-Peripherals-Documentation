@@ -17,13 +17,13 @@ Husbandry automata is a turtle with a Husbandry Mechanic Soul upgrade. This upgr
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name   | Interfaces with | Has events | Introduced in |
 | ----------------- | --------------- | ---------- | ------------- |
 | husbandryAutomata | World           | No         | 0.7r          |
 
-</center>
+</div>
 
 ---
 

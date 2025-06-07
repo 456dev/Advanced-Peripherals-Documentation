@@ -18,13 +18,13 @@ The Redstone Probe is a block from Immersive Engineering used to read and write 
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with      | Has events | Introduced in |
 | --------------- | -------------------- | ---------- | ------------- |
 | redstoneProbe   | Redstone Probe block | No         | 0.6b          |
 
-</center>
+</div>
 
 ---
 

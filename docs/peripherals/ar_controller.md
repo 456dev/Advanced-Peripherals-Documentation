@@ -17,13 +17,13 @@ The AR Controller is used to control your [AR Goggles](../items/ar_goggles.md) w
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | arController    | AR Goggles      | No         | 0.5b          |
 
-</center>
+</div>
 
 ---
 

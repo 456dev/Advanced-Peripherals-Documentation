@@ -61,7 +61,7 @@ The following example would return nil with the message `FLUID_NOT_FOUND` when u
 
 ### Count
 
-The item's/fluid's filter amout can be specified with the `count` field.
+The item's/fluid's filter amount can be specified with the `count` field.
 Standard values are 64 or 1000 for fluids.
 
 ```lua

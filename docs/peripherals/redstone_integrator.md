@@ -7,6 +7,10 @@ comments: true
 !!! picture inline end
     ![!Image of the Redstone Integrator block](../img/previews/redstone_integrator.png){ align=right }
 
+
+!!! warning
+    The redstone integrator got removed in 1.21.1-0.7.50b since it got superseded by the [redstone relay](https://tweaked.cc/peripheral/redstone_relay.html) from CC:T
+
 The Redstone Integrator is able to interact with redstone.
 You can use the same code you would use for a computer on a Redstone Integrator.
 
@@ -16,13 +20,13 @@ You may need this peripheral for cases where you need to output redstone signals
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name    | Interfaces with | Has events | Introduced in |
 | ------------------ | --------------- | ---------- | ------------- |
 | redstoneIntegrator | Redstone        | No         | 0.5.3b        |
 
-</center>
+</div>
 
 ---
 

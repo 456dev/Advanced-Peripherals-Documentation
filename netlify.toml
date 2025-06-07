@@ -5,6 +5,10 @@
     git config user.email "netlifybot@example.com"
     git remote set-url origin https://${GITHUB_TOKEN}@github.com/SirEndii/Advanced-Peripherals-Documentation.git
     git config pull.rebase true
+    git switch ${BRANCH}
+    git commit -m "cache updates" --all
+    git pull origin ${BRANCH}
+    git push origin 0.7
     git switch gh-pages
     git pull origin gh-pages
     git switch ${BRANCH}

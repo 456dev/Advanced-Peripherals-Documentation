@@ -13,13 +13,13 @@ This block is able to read data about any blocks or tile entities in front of it
 
 ---
 
-<center>
+<div class="center-table" markdown>
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
 | blockReader     | Blocks          | No         | 0.7r          |
 
-</center>
+</div>
 
 ---
 
