@@ -59,9 +59,9 @@ Returns the first mekanism chemical that matches the filter. Or nil with a debug
 
 ---
 
-### listItems
+### getItems
 ```
-listItems(filter: table) -> table | nil, string
+getItems(filter: table) -> table | nil, string
 ```
 
 Returns every item that matches the filter or an empty table if none could be found.
@@ -70,9 +70,9 @@ Returns nil if there was an issue parsing your table.
 
 ---
 
-### listFluids
+### getFluids
 ```
-listFluids(filter: table) -> table | nil, string
+getFluids(filter: table) -> table | nil, string
 ```
 
 Returns every fluid that matches the filter or an empty table if none could be found.
@@ -81,9 +81,9 @@ Returns nil if there was an issue parsing your table.
 
 ---
 
-### listChemicals
+### getChemicals
 ```
-listChemicals(filter: table) -> table | nil, string
+getChemicals(filter: table) -> table | nil, string
 ```
 
 Returns every mekanism chemical that matches the filter or an empty table if none could be found.
@@ -92,9 +92,9 @@ Returns nil if there was an issue parsing your table.
 
 ---
 
-### listCraftableItems
+### getCraftableItems
 ```
-listCraftableItems(filter: table) -> table | nil, string
+getCraftableItems(filter: table) -> table | nil, string
 ```
 
 Returns every craftable item that matches the filter even if there is currently no item stored or an empty table if none could be found.
@@ -103,9 +103,9 @@ Returns nil if there was an issue parsing your table.
 
 ---
 
-### listCraftableFluids
+### getCraftableFluids
 ```
-listCraftableFluids(filter: table) -> table | nil, string
+getCraftableFluids(filter: table) -> table | nil, string
 ```
 
 Returns every craftable fluid that matches the filter even if there is currently no fluid stored or an empty table if none could be found.
@@ -114,9 +114,9 @@ Returns nil if there was an issue parsing your table.
 
 ---
 
-### listCraftableChemicals
+### getCraftableChemicals
 ```
-listCraftableChemicals(filter: table) -> table | nil, string
+getCraftableChemicals(filter: table) -> table | nil, string
 ```
 
 Returns every craftable mekanism chemical that matches the filter even if there is currently no chemical stored or an empty table if none could be found.
@@ -125,9 +125,9 @@ Returns nil if there was an issue parsing your table.
 
 ---
 
-### listCells
+### getCells
 ```
-listCells() -> table | nil, string
+getCells() -> table | nil, string
 ```
 
 Returns every storage cell in the drives of the grid. Supports standard RS/ME cells and some third party cells.
@@ -135,9 +135,9 @@ Please open a feature request if some custom addon cells do not work
 
 ---
 
-### listDrives
+### getDrives
 ```
-listCells() -> table | nil, string
+getCells() -> table | nil, string
 ```
 
 Returns every drive connected to the system with the cells in it.
