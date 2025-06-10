@@ -269,8 +269,8 @@ Returns the energy usage of the grid
 
 ---
 
-???+ note
-Currently only supported by the ME Bridge
+!!! note
+    Currently only supported by the ME Bridge
 
 ### getAvgPowerInjection
 
@@ -278,7 +278,7 @@ Currently only supported by the ME Bridge
 getAvgPowerInjection() -> int
 ```
 
-Returns the stored energy in the grid.
+Returns the average power that is injected into the system
 
 ---
 
