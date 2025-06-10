@@ -1,20 +1,25 @@
 # Storage System Functions
 
-Starting from AP 0.8 and 0.7 for 1.21.1, the ME and RS Bridge both now share the same functionality along with the new crafting system.
+Starting from AP 0.8 and 0.7 for 1.21.1, the ME and RS Bridge both now share the same functionality along with the new
+crafting system.
 The following functions can be used for both the ME and RS Bridge
 
 !!! failure
-    <center> <h3> You need to place the inventory/tank you want to use to export/import stuff next to the ME/RS Bridge and **NOT** next to the computer! <h3> </center>
+    <center> <h3> You need to place the inventory/tank you want to use to export/import stuff next to the ME/RS Bridge and *
+    *NOT** next to the computer! <h3> </center>
 
 !!! tip
-    You can use the command `/advancedperipherals getHashItem` with an item in your hand to get the MD5 hash of the NBT tags of the item. An MD5 Hash can look like this `ae70053c97f877de546b0248b9ddf525`.
+    You can use the command `/advancedperipherals getHashItem` with an item in your hand to get the MD5 hash of the NBT tags
+    of the item. An MD5 Hash can look like this `-682649218295023`.
 
 ## Common Functions
 
 !!! info
-    The item arguments(`filter: table`) accepts our item/fluid/chemical filters, you can check the syntax of these filters [here](/../guides/filters).
+    The item arguments(`filter: table`) accepts our item/fluid/chemical filters, you can check the syntax of these
+    filters [here](/../guides/filters).
 
 ### isConnected
+
 ```
 isConnected() -> boolean
 ```
@@ -24,6 +29,7 @@ Returns true if the block is currently connected to a grid
 ---
 
 ### isOnline
+
 ```
 isOnline() -> boolean
 ```
@@ -33,6 +39,7 @@ Returns true if the grid is currently online and available
 ---
 
 ### getItem
+
 ```
 getItem(filter: table) -> table | nil, string
 ```
@@ -42,6 +49,7 @@ Returns the first item that matches the filter. Or nil with a debug message if n
 ---
 
 ### getFluid
+
 ```
 getFluid(filter: table) -> table | nil, string
 ```
@@ -51,6 +59,7 @@ Returns the first fluid that matches the filter. Or nil with a debug message if 
 ---
 
 ### getChemical
+
 ```
 getChemical(filter: table) -> table | nil, string
 ```
@@ -60,6 +69,7 @@ Returns the first mekanism chemical that matches the filter. Or nil with a debug
 ---
 
 ### getItems
+
 ```
 getItems(filter: table) -> table | nil, string
 ```
@@ -71,6 +81,7 @@ Returns nil if there was an issue parsing your table.
 ---
 
 ### getFluids
+
 ```
 getFluids(filter: table) -> table | nil, string
 ```
@@ -82,6 +93,7 @@ Returns nil if there was an issue parsing your table.
 ---
 
 ### getChemicals
+
 ```
 getChemicals(filter: table) -> table | nil, string
 ```
@@ -93,39 +105,46 @@ Returns nil if there was an issue parsing your table.
 ---
 
 ### getCraftableItems
+
 ```
 getCraftableItems(filter: table) -> table | nil, string
 ```
 
-Returns every craftable item that matches the filter even if there is currently no item stored or an empty table if none could be found.
+Returns every craftable item that matches the filter even if there is currently no item stored or an empty table if none
+could be found.
 An empty filter can be provided to get every resource.
 Returns nil if there was an issue parsing your table.
 
 ---
 
 ### getCraftableFluids
+
 ```
 getCraftableFluids(filter: table) -> table | nil, string
 ```
 
-Returns every craftable fluid that matches the filter even if there is currently no fluid stored or an empty table if none could be found.
+Returns every craftable fluid that matches the filter even if there is currently no fluid stored or an empty table if
+none could be found.
 An empty filter can be provided to get every resource.
 Returns nil if there was an issue parsing your table.
 
 ---
 
 ### getCraftableChemicals
+
 ```
 getCraftableChemicals(filter: table) -> table | nil, string
 ```
 
-Returns every craftable mekanism chemical that matches the filter even if there is currently no chemical stored or an empty table if none could be found.
+Returns every craftable mekanism chemical that matches the filter even if there is currently no chemical stored or an
+empty table if none could be found.
 An empty filter can be provided to get every resource.
 Returns nil if there was an issue parsing your table.
 
 ---
 
 ### getCells
+
 ```
 getCells() -> table | nil, string
 ```
@@ -136,6 +155,7 @@ Please open a feature request if some custom addon cells do not work
 ---
 
 ### getDrives
+
 ```
 getCells() -> table | nil, string
 ```
@@ -147,20 +167,23 @@ Returns every drive connected to the system with the cells in it.
 ## Importing/Exporting functions
 
 You may are used to two different functions, `importItemFromPeripheral` and `importItem`
-The functions now support both at the same time. It first tries to parse the given string `target` as a cardinal or relative direction.
+The functions now support both at the same time. It first tries to parse the given string `target` as a cardinal or
+relative direction.
 If that fails, it tries to search for a peripheral on the CC network which exposes an item handler or capability.
 
 ### importItem
+
 ```
 importItem(filter: table, target: string) -> table | nil, string
 ```
 
-Imports an item from the specified target. The filter can be empty to import every item. 
+Imports an item from the specified target. The filter can be empty to import every item.
 One call imports 64 of resources by default, can be set using the count filter key.
 
 ---
 
 ### exportItem
+
 ```
 exportItem(filter: table, target: string) -> table | nil, string
 ```
@@ -171,6 +194,7 @@ One call exports 64 of resources by default, can be set using the count filter k
 ---
 
 ### importFluid
+
 ```
 importFluid(filter: table, target: string) -> table | nil, string
 ```
@@ -181,6 +205,7 @@ One call imports 1000mB of resources by default, can be set using the count filt
 ---
 
 ### exportFluid
+
 ```
 exportFluid(filter: table, target: string) -> table | nil, string
 ```
@@ -191,6 +216,7 @@ One call exports 1000mB of resources by default, can be set using the count filt
 ---
 
 ### importChemical
+
 ```
 importChemical(filter: table, target: string) -> table | nil, string
 ```
@@ -201,6 +227,7 @@ One call imports 1000mB of resources by default, can be set using the count filt
 ---
 
 ### exportChemical
+
 ```
 exportChemical(filter: table, target: string) -> table | nil, string
 ```
@@ -213,6 +240,7 @@ One call exports 1000Mb of resources by default, can be set using the count filt
 ## Energy Related Functions
 
 ### getStoredEnergy
+
 ```
 getStoredEnergy() -> int
 ```
@@ -222,6 +250,7 @@ Returns the stored energy in the grid.
 ---
 
 ### getEnergyCapacity
+
 ```
 getEnergyCapacity() -> int
 ```
@@ -231,6 +260,7 @@ Returns the maximum energy capacity of the grid
 ---
 
 ### getEnergyUsage
+
 ```
 getEnergyUsage() -> int
 ```
@@ -240,9 +270,10 @@ Returns the energy usage of the grid
 ---
 
 ???+ note
-    Currently only supported by the ME Bridge
+Currently only supported by the ME Bridge
 
 ### getAvgPowerInjection
+
 ```
 getAvgPowerInjection() -> int
 ```
@@ -253,7 +284,12 @@ Returns the stored energy in the grid.
 
 ## Storage Related Functions
 
+!!! warning
+    The RS Bridge currently does not support Any external storage function, we will hopefully be able to support them when
+    RS2 is out of beta.
+
 ### getTotalExternItemStorage
+
 ```
 getTotalExternItemStorage() -> int
 ```
@@ -265,6 +301,7 @@ This function returns the available storage in items even with the byte system f
 ---
 
 ### getTotalExternFluidStorage
+
 ```
 getTotalExternFluidStorage() -> int
 ```
@@ -276,6 +313,7 @@ This function returns the available storage in millibuckets even with the byte s
 ---
 
 ### getTotalExternChemicalStorage
+
 ```
 getTotalExternChemicalStorage() -> int
 ```
@@ -287,6 +325,7 @@ This function returns the available storage in millibuckets even with the byte s
 ---
 
 ### getTotalItemStorage
+
 ```
 getTotalItemStorage() -> int
 ```
@@ -297,6 +336,7 @@ This function returns the available storage in items for RS and in bytes for AE2
 ---
 
 ### getTotalFluidStorage
+
 ```
 getTotalFluidStorage() -> int
 ```
@@ -307,6 +347,7 @@ This function returns the available storage in millibuckets for RS and in bytes 
 ---
 
 ### getTotalChemicalStorage
+
 ```
 getTotalChemicalStorage() -> int
 ```
@@ -317,6 +358,7 @@ This function returns the available storage in millibuckets for RS and in bytes 
 ---
 
 ### getUsedExternItemStorage
+
 ```
 getUsedExternItemStorage() -> int
 ```
@@ -328,6 +370,7 @@ This function returns the used storage in items even with the byte system from A
 ---
 
 ### getUsedExternFluidStorage
+
 ```
 getUsedExternFluidStorage() -> int
 ```
@@ -339,6 +382,7 @@ This function returns the used storage in millibuckets even with the byte system
 ---
 
 ### getUsedExternChemicalStorage
+
 ```
 getUsedExternChemicalStorage() -> int
 ```
@@ -350,6 +394,7 @@ This function returns the used storage in millibuckets even with the byte system
 ---
 
 ### getUsedItemStorage
+
 ```
 getUsedItemStorage() -> int
 ```
@@ -360,6 +405,7 @@ This function returns the used storage in items for RS and in bytes for AE2
 ---
 
 ### getUsedItemStorage
+
 ```
 getUsedItemStorage() -> int
 ```
@@ -370,6 +416,7 @@ This function returns the used storage in millibuckets for RS and in bytes for A
 ---
 
 ### getUsedItemStorage
+
 ```
 getUsedItemStorage() -> int
 ```
@@ -380,6 +427,7 @@ This function returns the used storage in millibuckets for RS and in bytes for A
 ---
 
 ### getAvailableExternItemStorage
+
 ```
 getAvailableExternItemStorage() -> int
 ```
@@ -391,6 +439,7 @@ This function returns the available and not used storage in items even with the 
 ---
 
 ### getAvailableExternFluidStorage
+
 ```
 getAvailableExternFluidStorage() -> int
 ```
@@ -402,6 +451,7 @@ This function returns the available and not used storage in millibuckets even wi
 ---
 
 ### getAvailableExternChemicalStorage
+
 ```
 getAvailableExternChemicalStorage() -> int
 ```
@@ -413,6 +463,7 @@ This function returns the available and not used storage in millibuckets even wi
 ---
 
 ### getAvailableItemStorage
+
 ```
 getAvailableItemStorage() -> int
 ```
@@ -423,6 +474,7 @@ This function returns the available and not used storage in items for RS and in 
 ---
 
 ### getAvailableFluidStorage
+
 ```
 getAvailableFluidStorage() -> int
 ```
@@ -433,6 +485,7 @@ This function returns the available and not used storage in millibuckets for RS 
 ---
 
 ### getAvailableChemicalStorage
+
 ```
 getAvailableChemicalStorage() -> int
 ```
@@ -445,25 +498,34 @@ This function returns the available and not used storage in millibuckets for RS 
 ## Crafting System and functions
 
 Since 0.8 and beta 0.7 for 1.21.1 we created a new crafting system for both the ME and RS Bridge
-The functionality is mostly the same but since the RS api is currently not as extensive as the AE2 api, the RS Craft Job may miss some functions.
+The functionality is mostly the same but since the RS api is currently not as extensive as the AE2 api, the RS Craft Job
+may miss some functions.
 
 The craft function now returns an object instead of a boolean. Using that object is optional.
-That object contains information about the job, if it was canceled, what was requested, what items may miss if calculation was not successful and much more.
+That object contains information about the job, if it was canceled, what was requested, what items may miss if
+calculation was not successful and much more.
 
-Crafting is in both RS and AE async. If you request a feature, it calculates the recipe in the background and if that was successful it starts the task.
+Crafting is in both RS and AE async. If you request a feature, it calculates the recipe in the background and if that
+was successful it starts the task.
 To support that in a simple way on a users end, we created that custom object.
 
-When you schedule a task, it firsts starts calculation in the background and sends an event that the item is either not craftable or the calculation was started.
-If calculation is done, there are several things that can happen. If the calculation was not successful and there were missing items, it fires the crafting event with the message "MISSING_ITEMs".
+When you schedule a task, it firsts starts calculation in the background and sends an event that the item is either not
+craftable or the calculation was started.
+If calculation is done, there are several things that can happen. If the calculation was not successful and there were
+missing items, it fires the crafting event with the message "MISSING_ITEMs".
 The missing items can be retrieved using the object's function `getMissingItems`.
-Depending on if you use RS or AE2, it also may return other debug messages if the calculation was nto successful like overflow or cycle detected.
+Depending on if you use RS or AE2, it also may return other debug messages if the calculation was nto successful like
+overflow or cycle detected.
 
 If the calculation was successful, the event will fire with the message `CRAFTING_STARTED` and then starts the crafting.
 
-There are now two ways to track the progress. the `crafting` event will fire when the crafting is done, it was canceled or if other things might happen that affects the task.
-The event also gives you an id to get the crafting object you would also get from the initial `craftX` function. Simply use `getCraftingJob` to get the object.
+There are now two ways to track the progress. the `crafting` event will fire when the crafting is done, it was canceled
+or if other things might happen that affects the task.
+The event also gives you an id to get the crafting object you would also get from the initial `craftX` function. Simply
+use `getCraftingJob` to get the object.
 
-The other way is to regularly check if the crafting is done or canceled by calling the objects `isDone` or `isCanceled` function.
+The other way is to regularly check if the crafting is done or canceled by calling the objects `isDone` or `isCanceled`
+function.
 Using the event is more simple there.
 
 Every function and property is described in more details below.
@@ -490,8 +552,8 @@ else
 end
 ```
 
-
 ### craftItem
+
 ```
 craftItem(filter: table) -> table | nil, string
 ```
@@ -502,6 +564,7 @@ Or nil if there was an issue with parsing the filter
 ---
 
 ### craftFluid
+
 ```
 craftFluid(filter: table) -> table | nil, string
 ```
@@ -512,6 +575,7 @@ Or nil if there was an issue with parsing the filter
 ---
 
 ### craftChemical
+
 ```
 craftChemical(filter: table) -> table | nil, string
 ```
@@ -522,6 +586,7 @@ Or nil if there was an issue with parsing the filter
 ---
 
 ### getCraftingTasks
+
 ```
 getCraftingTasks() -> table
 ```
@@ -530,16 +595,18 @@ Returns every crafting task that is currently running.
 
 ---
 
-### getCraftingJob
+### getCraftingTask
+
 ```
 getCraftingJob(id: int) -> table | nil, string
 ```
 
-Returns the crafting job object with the id. Nil if no object could be found
+Returns the [Crafting Job Object](/../guides/storage_system_functions#crafting-job) with the id. Nil if no object could be found
 
 ---
 
 ### cancelCraftingTasks
+
 ```
 cancelCraftingTasks(filter: table) -> int
 ```
@@ -549,6 +616,7 @@ Cancels every crafting task where the output matches the filter
 ---
 
 ### getPatterns
+
 ```
 getPatterns(pattern_filter: table) -> table | nil, string
 ```
@@ -556,11 +624,13 @@ getPatterns(pattern_filter: table) -> table | nil, string
 Returns every pattern available to the grid or nil if there was an issue with parsing one of the filters.
 The filter of this function is a bit different
 
-You **can** specify filters for the output and input of patterns. If you don't provide any filter or just no argument at all, it will return every pattern.
+You **can** specify filters for the output and input of patterns. If you don't provide any filter or just no argument at
+all, it will return every pattern.
 
 To specify an input or output filter, you need to use an `input`/`output` key in the filters table.
 
-For example 
+For example
+
 ```lua linenums="1"
 -- Filter for any patterns with sticks as an output
 outputFilter = {
@@ -593,6 +663,7 @@ patterns = bridge.getPatterns()
 ---
 
 ### isCraftable
+
 ```
 isCraftable(filter: table) -> boolean
 ```
@@ -603,11 +674,153 @@ The filter can be an item filter, a chemical filter or a fluid filter. See [filt
 ---
 
 ### isCrafting
+
 ```
 isCrafting(filter: table) -> boolean
 ```
 
-Returns true if there is a crafting job running for the provided filter or nil if there was an issue with parsing the filter.
+Returns true if there is a crafting job running for the provided filter or nil if there was an issue with parsing the
+filter.
 The filter can be an item filter, a chemical filter or a fluid filter. See [filter types](/../guides/filters/#types)
 
+## Objects
 
+Every object here is inherited from common lua objects, see [LuaObjects](/../guides/objects)
+Please note that due to different natures of AE2 and RS that not every object is the same.
+
+### Item Stack
+
+| Property    | Type    | Description                                      |
+|-------------|---------|--------------------------------------------------|
+| isCraftable | boolean | Whether the item is craftable (A pattern exists) |
+
+### Fluid Stack
+
+| Property    | Type    | Description                                      |
+|-------------|---------|--------------------------------------------------|
+| isCraftable | boolean | Whether the item is craftable (A pattern exists) |
+
+### Chemical Stack
+
+| Property    | Type    | Description                                      |
+|-------------|---------|--------------------------------------------------|
+| isCraftable | boolean | Whether the item is craftable (A pattern exists) |
+
+### Storage Disk
+
+AE2 and RS2 storage disks sadly have a bunch of different properties since AE2 works with types and bytes while RS does
+not.
+
+#### Refined Storage Disk
+
+| Property | Type   | Description                 |
+|----------|--------|-----------------------------|
+| used     | number | Storage amount what is used |
+| capacity | number | Total Capacity              |
+| state    | string | RS Storage state[^1]        |
+| type     | string | RS Storage type[^2]         |
+
+#### Applied Energistics Disk
+
+| Property     | Type                                   | Description                      |
+|--------------|----------------------------------------|----------------------------------|
+| item         | [Item Object](/../guides/objects#item) | Disk as an Item                  |
+| usedBytes    | number                                 | Used Bytes                       |
+| totalBytes   | number                                 | Types capacity (Usually 63)      |
+| bytes        | number                                 | Bytes capacity                   |
+| bytesPerType | number                                 | Amount of bytes used by one type |
+| type         | string                                 | AE2 Storage Type[^3]             |
+| fuzzyMode    | string                                 | AE2 Fuzzy[^4]                    |
+
+#### DISK Drive disk
+
+Storage DISK Drive from AE2 Things inherit the same properties from the classic AE2 disk.
+
+### Pattern
+
+| Property      | Type                                                                                                                    | Description                                |
+|---------------|-------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| primaryOutput | [Item/Fluid/Chem Stack Object](/../guides/storage_system_functions#objects)                                             | Primary Output                             |
+| outputs       | Array of [Item/Fluid/Chem Stack Object](/../guides/storage_system_functions#objects). </br> Or AE2 Pattern Input object | Outputs                                    |
+| inputs        | Array of [Item/Fluid/Chem Stack Object](/../guides/storage_system_functions#objects)                                    | Inputs                                     |
+| patternType   | string                                                                                                                  | Pattern Type, different for AE2 and RS[^5] |
+| id            | string                                                                                                                  | Pattern ID, only for RS                    |
+
+### AE2 Pattern Input
+
+| Property       | Type                                                                                 | Description                                                                              |
+|----------------|--------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| primaryInput   | [Item/Fluid/Chem Stack Object](/../guides/storage_system_functions#objects)          | Primary Input.                                                                           |
+| possibleInputs | Array of [Item/Fluid/Chem Stack Object](/../guides/storage_system_functions#objects) | Other possible Inputs                                                                    |
+| multiplier     | number                                                                               | How many possible inputs are necessary to craft this pattern                             |
+| remaining      | number                                                                               | Remaining items like buckets when a water bucket was used. Nil for non crafting patterns |
+
+### AE2 Crafting CPU
+
+| Property      | Type                | Description                                             |
+|---------------|---------------------|---------------------------------------------------------|
+| storage       | number              | Available storage in bytes                              |
+| coProcessors  | number              | Available co processing unity                           |
+| isBusy        | boolean             | Whether the CPU is currently performing a task          |
+| craftingJob   | Crafting Job Object | The job it currently performs                           |
+| name          | string              | Either "Unnamed" when not named for the name of the CPU |
+| selectionMode | string              | CPU Selection mode[^6]                                  |
+
+### Crafting Job Details
+
+| Property   | Type                                                                            | Description                                                   |
+|------------|---------------------------------------------------------------------------------|---------------------------------------------------------------|
+| bridge_id  | number                                                                          | The ID of that task when scheduled via the bride or -1 if not |
+| id         | string                                                                          | ID of the task                                                |
+| quantity   | number                                                                          | Amount scheduled                                              |
+| resource   | [Item/Fluid/Chem Stack Object](/../guides/storage_system_functions#objects)     | The scheduled resource                                        |
+| completion | floating number between 0 and 1                                                 | Completion in percentage                                      |
+| crafted    | number                                                                          | Amount already crafted                                        |
+| cpu        | [AE2 Crafting CPU Object](/../guides/storage_system_functions#ae2-crafting-cpu) | The crafting cpu, nil for RS                                  |
+
+### Crafting Job
+
+With the new crafting system, we have a complete new crafting job object. While the basic crafting job only offers some simple details, the actual job that manages the crafting offers everything that RS or AE2 would offer.
+Tho these are no properties/fields, these are functions since always pulling these information would be a waste of time.
+
+Represents a crafting job in the ME/RS system. Used for tracking crafting operations.
+
+| Function                     | Return Type | Description                                                         |
+|------------------------------|-------------|---------------------------------------------------------------------|
+| getId()                      | number      | Returns the unique identifier of the crafting job                   |
+| isDone()                     | boolean     | Returns whether the crafting job is completed                       |
+| isCanceled()                 | boolean     | Returns whether the crafting job was canceled                       |
+| isCraftingStarted()          | boolean     | Returns whether the crafting process has started                    |
+| isCalculationStarted()       | boolean     | Returns whether the calculation process has started                 |
+| isCalculationNotSuccessful() | boolean     | Returns whether the calculation failed                              |
+| hasErrorOccurred()           | boolean     | Returns whether an error occurred during the job                    |
+| getDebugMessage()            | string      | Returns a debug message with additional information about the job   |
+| getRequestedItem()           | object      | Returns the requested item/fluid/chemical as an object              |
+| getElapsedTime()             | number      | Returns the elapsed time since the job was created                  |
+| getTotalItems()              | number      | Returns the total number of items to be crafted                     |
+| getItemProgress()            | number      | Returns the current progress of crafting (how many items completed) |
+| getEmittedItems()            | object      | Returns an object representing the items already emitted by the job |
+| getUsedItems()               | object      | Returns an object representing the items used in crafting           |
+| getMissingItems()            | object      | Returns an object representing items missing for crafting           |
+| hasMultiplePaths()           | boolean     | Returns whether there are multiple crafting paths available         |
+| getFinalOutput()             | object      | Returns the final output item/fluid/chemical                        |
+| cancel()                     | boolean     | Cancels the crafting job and returns whether it was successful      |
+| getUsedBytes()               | number      | Returns the used bytes for that job. AE2 only                       |
+
+[^1]:
+Can be NONE, INACTIVE, NORMAL, NEAR_CAPACITY, FULL.
+
+[^2]:
+Can be item, fluid, chemical, unknown (with an unknown addon).
+
+[^3]:
+Can be ae2:f, ae2:i, ae2:chemical or storage types from other addons.
+
+[^4]:
+Can be IGNORE_ALL, PERCENT_99, PERCENT_75, PERCENT_50, PERCENT_25.
+
+[^5]:
+For RS: EXTERNAL, INTERNAL. For AE2: crafting, processing, smithing, stonecutting, unknown(for unknown third party patterns).
+
+[^6]:
+Can be ANY, PLAYER_ONLY, MACHINE_ONLY.
