@@ -1,4 +1,3 @@
-
 ---
 comments: true
 ---
@@ -124,7 +123,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     importItem(item: table, direction: string) -> number
     ```
     
-    Imports an `item` from a container in the `direction` to the ME System.  
+    Imports an `item` from a container in the `direction` to the RS System.  
     Returns the number of the `item` imported into the system.
     
     !!! tip "Since version 0.7r"
@@ -144,7 +143,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     exportItem(item: table, direction: string) -> number
     ```
     
-    Exports an `item` to a container in the `direction` from the ME bridge block.  
+    Exports an `item` to a container in the `direction` from the RS bridge block.  
     Returns the number of the `item` exported into the container.
     
     ```lua linenums="1"
@@ -227,7 +226,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     getEnergyStorage() -> number
     ```
     
-    Returns the stored energy of the whole ME System in FE.
+    Returns the stored energy of the whole RS System in FE.
     
     ---
     
@@ -236,7 +235,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     getMaxEnergyStorage() -> number
     ```
     
-    Returns the maximum energy storage capacity of the whole ME system in FE.
+    Returns the maximum energy storage capacity of the whole RS system in FE.
     
     ---
     
@@ -245,7 +244,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     getEnergyUsage() -> number
     ```
     
-    Returns the energy usage of the whole ME System in FE/t.
+    Returns the energy usage of the whole RS System in FE/t.
     
     ---
     
@@ -338,7 +337,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     listItems() -> table
     ```
     
-    Returns a list of information about all items in the ME System.
+    Returns a list of information about all items in the RS System.
     
     ---
     
@@ -347,7 +346,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     listFluids() -> table
     ```
     
-    Returns a list of information about all fluids in the ME System.
+    Returns a list of information about all fluids in the RS System.
     
     ---
 
