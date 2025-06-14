@@ -2,16 +2,16 @@
 comments: true
 ---
 
-# ME Bridge
+# RS Bridge
 
 !!! picture inline end
-    ![!Image of the ME Bridge block](../img/previews/me_bridge.png){ align=right }
+    ![!Image of the RS Bridge block](../img/previews/rs_bridge.png){ align=right }
 
-The ME Bridge is able to interact with Applied Energistics 2.
-You can retrieve items, craft items, get all items as a list and more. The ME Bridge uses one channel.
+The RS Bridge is able to interact with Refined Storage.
+You can retrieve items, craft items, get all items as a list and more.
 
 !!! warning "Requirement"
-    Requires the [Applied Energistics 2](https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2) mod to be installed
+    Requires the [Refined Storage](https://www.curseforge.com/minecraft/mc-mods/refined-storage) mod to be installed
 
 <p class="picture-spacing" style="--ps:0.6rem;"></p>
 
@@ -21,14 +21,14 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
-| meBridge        | ME System       | Yes        | 0.3b          |
+| rsBridge        | Refined Storage | No         | 0.3.6b        |
 
 </div>
 
 ---
 
 !!! failure
-    <center> <h3> You need to place the inventory/tank you want to use to export/import stuff next to the ME Bridge and **NOT** next to the computer! <h3> </center>
+    <center> <h3> You need to place the inventory/tank you want to use to export/import stuff next to the RS Bridge and **NOT** next to the computer! <h3> </center>
 
 === "1.20.1-0.7 and older"
 
@@ -36,21 +36,48 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
         If you are playing on 0.7 for the minecraft version 1.21.1 and older, please use the content tab for "1.21.1-0.7 and newer".
         The following documentation contains the legacy ME and RS bridge features which will be replaced with the next stable AP version.
 
-        The newer ME and RS Bridge system will eventually be back ported to 1.20.1 and 1.19.2 with 0.8.
+        The new ME and RS Bridge systems will eventually be back ported to 1.20.1 and 1.19.2 with 0.8.
 
     <div class="result" markdown>
+    
+    ## Events
 
+    ### crafting
+    Fires when a crafting job starts or fails.  
+    **Values:**
+    1. `success: boolean` Indicates whether a crafting job has successfully started or not
+    2. `message: string` A message about the status of the crafting job  
+    These values are equivalent to the return values of [`craftItem()`](#craftitem).
+    
+    ```lua linenums="1"
+    local event, success, message = os.pullEvent("crafting")
+    if success then
+        print("A crafting job has successfully started")
+    else
+        print("A crafting job has failed to start")
+    end
+    ```
+    
+    !!! Warning
+    The `crafting` event will fire when the ME Bridge is connected to an active ME System that is performing crafting operations. These operations **need** to be started by the bridge itself!
+    
+    ---
+    
+    !!! tip
+    You can use the command `/advancedperipherals getHashItem` with an item in your hand to get the MD5 hash of the NBT tags of the item. An MD5 Hash can look like this `ae70053c97f877de546b0248b9ddf525`.
+    
     ## Functions
     
     !!! info
     The item arguments(`item: table`) accepts our item filters, you can check the syntax of these filters [here](/../guides/filters).
     
+    
     ### craftItem
     ```
-    craftItem(item: table) -> boolean
+    craftItem(item: table[, craftingCpu: string]) -> boolean, err: string
     ```
     
-    Tries to craft the provided `item`, returns true if it successfully starts crafting.
+    Tries to craft the provided `item`. If a `craftingCpu`'s name is provided then it will use that cpu to craft the `item`.
     
     #### Item Properties
     
@@ -73,33 +100,32 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### craftFluid
     ```
-    craftFluid(fluid: table, amount: number) -> boolean
+    craftFluid(fluid: table[, craftingCpu: string]) -> boolean, err: string
     ```
     
-    Tries to craft the provided `fluid` of the given `amount`, returns true if it successfully starts crafting.
+    Tries to craft the provided `fluid`. If a `craftingCpu`'s name is provided then it will use that cpu to craft the `fluid`.
     
     #### Fluid Properties
     
     Check the [fluid filters guide](/../guides/filters) for more info!
     
-    | fluid             | Description                                 |
+    | fluid            | Description                                 |
     | ---------------- | ------------------------------------------- |
-    | name: `string`   | The registry name of the fluid or a tag      |
-    | count: `number?` | The amount of the fluid to craft             |
-    | nbt: `string?`   | NBT to match the fluid on                    |
+    | name: `string`   | The registry name of the fluid or a tag     |
+    | count: `number?` | The amount of the fluid to craft            |
+    | nbt: `string?`   | NBT to match the fluid on                   |
     
     **OR**
     
-    | fluid                  | Description                                 |
+    | fluid                 | Description                                 |
     | --------------------- | ------------------------------------------- |
     | fingerprint: `string` | A unique fingerprint which identifies the<br>fluid to craft |
-    | count: `number?`      | The amount of the fluid to craft      
-    
+    | count: `number?`      | The amount of the fluid to craft            |
     ---
     
     ### getItem
     ```
-    getItem(item: table) -> table
+    getItem(item: table) -> table, err: string
     ```
     
     Returns a table with information about the item type in the system.
@@ -120,17 +146,17 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### importItem
     ```
-    importItem(item: table, direction: string) -> number
+    importItem(item: table, direction: string) -> number, err: string
     ```
     
-    Imports an `item` from a container in the `direction` to the RS System.  
+    Imports an `item` from a container in the `direction` to the ME System.  
     Returns the number of the `item` imported into the system.
     
     !!! tip "Since version 0.7r"
     You can now use both relative (`right`, `left`, `front`, `back`, `top`, `bottom`) and cardinal (`north`, `south`, `east`, `west`, `up`, `down`) directions for the `direction` argument.
     
     ```lua linenums="1"
-    local bridge = peripheral.find("rsBridge")
+    local bridge = peripheral.find("meBridge")
     
     -- Imports 32 dirt from the container above into the system
     bridge.importItem({name="minecraft:dirt", count=1}, "up")
@@ -140,14 +166,14 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### exportItem
     ```
-    exportItem(item: table, direction: string) -> number
+    exportItem(item: table, direction: string) -> number, err: string
     ```
     
-    Exports an `item` to a container in the `direction` from the RS bridge block.  
+    Exports an `item` to a container in the `direction` from the ME bridge block.  
     Returns the number of the `item` exported into the container.
     
     ```lua linenums="1"
-    local bridge = peripheral.find("rsBridge")
+    local bridge = peripheral.find("meBridge")
     
     -- Exports 1 "Protection I" book into the container above
     bridge.exportItem({name="minecraft:enchanted_book", count=1, nbt="ae70053c97f877de546b0248b9ddf525"}, "up")
@@ -157,7 +183,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### importItemFromPeripheral
     ```
-    importItemFromPeripheral(item: table, container: string) -> number
+    importItemFromPeripheral(item: table, container: string) -> number, err: string
     ```
     
     Similar to [`importItem()`](#importitem) it imports an `item` from a container which is connected to the peripheral network.  
@@ -168,7 +194,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### exportItemToPeripheral
     ```
-    exportItemToPeripheral(item: table, container: string) -> number
+    exportItemToPeripheral(item: table, container: string) -> number, err: string
     ```
     
     Similar to [`exportItem()`](#exportitem) it exports an `item` to a container which is connected to the peripheral network.  
@@ -177,112 +203,63 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ---
     
-    ### getMaxItemDiskStorage
-    ```
-    getMaxItemDiskStorage() -> number
-    ```
-    
-    !!! success "Added in version 0.7.3r"
-    
-    Returns the total amount of available item disk storage.
-    
-    ---
-    
-    ### getMaxFluidDiskStorage
-    ```
-    getMaxItemDiskStorage() -> number
-    ```
-    
-    !!! success "Added in version 0.7.3r"
-    
-    Returns the total amount of available fluid disk storage.
-    
-    ---
-    
-    ### getMaxItemExternalStorage
-    ```
-    getMaxItemExternalStorage() -> number
-    ```
-    
-    !!! success "Added in version 0.7.3r"
-    
-    Returns the total amount of available external item disk storage.
-    
-    ---
-    
-    ### getMaxFluidExternalStorage
-    ```
-    getMaxFluidExternalStorage() -> number
-    ```
-    
-    !!! success "Added in version 0.7.3r"
-    
-    Returns the total amount of available external fluid disk storage.
-    
-    ---
-    
     ### getEnergyStorage
     ```
-    getEnergyStorage() -> number
+    getEnergyStorage() -> number, err: string
     ```
     
-    Returns the stored energy of the whole RS System in FE.
+    Returns the stored energy of the whole ME System in AE.
     
     ---
     
     ### getMaxEnergyStorage
     ```
-    getMaxEnergyStorage() -> number
+    getMaxEnergyStorage() -> number, err: string
     ```
     
-    Returns the maximum energy storage capacity of the whole RS system in FE.
+    Returns the maximum energy storage capacity of the whole ME system in AE.
     
     ---
     
     ### getEnergyUsage
     ```
-    getEnergyUsage() -> number
+    getEnergyUsage() -> number, err: string
     ```
     
-    Returns the energy usage of the whole RS System in FE/t.
+    Returns the energy usage of the whole ME System in AE/t.
     
     ---
     
-    ### getPattern
+    ### getCraftingCPUs
     ```
-    getPattern(item: table) -> table | nil, string
+    getCraftingCPUs() -> table, err: string
     ```
     
-    !!! success "Added in version 0.7.3r"
+    Returns a list of all connected crafting cpus.
     
-    Returns the crafting pattern for the `item` if one exists.
+    #### CPU Properties
     
-    #### Properties
-    
-    | pattern               | Description                                             |
-    | --------------------- | ------------------------------------------------------- |
-    | inputs: `table`       | A list of all the input items                           |
-    | outputs: `table`      | A list of all of the output items                       |
-    | byproducts: `table`   | A list of any byproduct items                           |
-    | processing: `boolean` | If the pattern is currently being used in crafting      |
+    | cpu                    | Description                            |
+    | ---------------------- | -------------------------------------- |
+    | storage: `number`      | The amount of storage the CPU has      |
+    | coProcessors: `number` | The number of coprocessors the CPU has |
+    | isBusy: `boolean`      | If the cpu is currently crafting       |
     
     ---
     
     ### isItemCrafting
     ```
-    isItemCrafting(item: table) -> boolean
+    isItemCrafting(item: table[, craftingCpu: string]) -> boolean, err: string
     ```
     
-    Returns true if a crafting job for the `item` exists.
+    Returns true if a crafting job for the `item` exists. If a `craftingCpu`'s name is provided then it will check only if that cpu is crafting the `item`.
     
     ---
     
     ### isItemCraftable
     ```
-    isItemCraftable(item: table) -> boolean
+    isItemCraftable(item: table) -> boolean, err: string
     ```
-    
-    !!! success "Added in version 0.7.3r"
     
     Returns true if the `item` is craftable.
     
@@ -290,10 +267,8 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### listCraftableItems
     ```
-    listCraftableItems() -> table
+    listCraftableItems() -> table, err: string
     ```
-    
-    !!! danger "Does not exist in versions >=0.7.3r, <0.7.10b"
     
     Returns a list of information about all craftable items
     
@@ -310,7 +285,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     | tags: `table`          | A list of all of the item tags                          |
     
     ```lua linenums="1"
-    local bridge = peripheral.find("rsBridge")
+    local bridge = peripheral.find("meBridge")
     
     -- print out all craftable items
     craftableItems = bridge.listCraftableItems()
@@ -321,12 +296,10 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ---
     
-    ### listCraftableFluids
+    ### listCraftableFluid
     ```
-    listCraftableFluids() -> table
+    listCraftableFluid() -> table, err: string
     ```
-    
-    !!! danger "Does not exist in versions >=0.7.3r, <0.7.10b"
     
     Returns a list of information about all craftable fluids
     
@@ -334,27 +307,120 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     ### listItems
     ```
-    listItems() -> table
+    listItems() -> table, err: string
     ```
     
-    Returns a list of information about all items in the RS System.
+    Returns a list of information about all items in the ME System.
     
     ---
     
-    ### listFluids
+    ### listFluid
     ```
-    listFluids() -> table
+    listFluid() -> table, err: string
     ```
     
-    Returns a list of information about all fluids in the RS System.
+    Returns a list of information about all fluids in the ME System.
     
     ---
+    
+    ### listGas
+    ```
+    listGas() -> table, err: string
+    ```
+    
+    Returns a list of information about all gases (Applied Mekanistics) in the ME System.
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### listCells
+    ```
+    listCells() -> table, err: string
+    ```
+    
+    Returns a list of information about all cells in the disk drives of the ME System.
+    
+    
+    | cell                   | Description                            |
+    | ---------------------- | -------------------------------------- |
+    | item: `string`         | The name of the cell. e.g. `ae2:64k_storage_cell |
+    | cellType: `string`     | The type of the cell. `item` or `fluid`|
+    | bytesPerType: `int`    | The bytes per type                     |
+    | totalBytes: `int`      | Total available bytes of the cell       |
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### getTotalItemStorage
+    ```
+    getTotalItemStorage() -> int, err: string
+    ```
+    
+    Returns how much total item storage the system offers
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### getTotalFluidStorage
+    ```
+    getTotalFluidStorage() -> int, err: string
+    ```
+    
+    Returns how much total fluid storage the system offers
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### getUsedItemStorage
+    ```
+    getUsedItemStorage() -> int, err: string
+    ```
+    
+    Returns how much item storage is used
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### getUsedFluidStorage
+    ```
+    getUsedFluidStorage() -> int, err: string
+    ```
+    
+    Returns how much fluid storage is used
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### getAvailableItemStorage
+    ```
+    getAvailableItemStorage() -> int, err: string
+    ```
+    
+    Returns how much item storage is available
+    
+    ---
+    
+    !!! success "Added in version 1.18.2-0.7.24r | 1.19.2-0.7.23b"
+    
+    ### getAvailableFluidStorage
+    ```
+    getAvailableFluidStorage() -> int, err: string
+    ```
+    
+    Returns how much fluid storage is available
+
 
     </div>
 
 === "1.21.1-0.7 and newer"
     <div class="result" markdown>
-    
+
     !!! info
         If you are playing on 0.7 for the minecraft version 1.20.1 and older, please use the content tab for "1.20.1-0.7 and older".
         The following documentation also works for the canary 0.8 version.
@@ -363,17 +429,16 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
 
     ## Functionality
     
-    The RS and ME Bridge now share the same functionality. Check [this Guide](../guides/storage_system_functions.md) for the whole documentation for every available feature.
+    The RS and ME Bridge now share the same functionality. Check [this Guide](../guides/storage_system_functions) for the whole documentation for every available feature.
 
     </div>
 
----
 
 ## Examples
 
 ### Requester
 
-The requester is a successor for the old "Automatic Autocrafting" script which uses the old ME Bridge functions.
+The requester is a successor for the old "Autocrafting script" script which uses the old RS Bridge functions.
 It currently only works with AP on 1.21.1 or on 1.19.2 0.8 and supports both the ME and the RS Bridge at the same time.
 
 This script automatically schedules crafting jobs for pre-defined items, fluids and mekanism chemicals
@@ -384,37 +449,36 @@ You can find instructions on how to install the script [here](https://github.com
 
 ![Requester example script preview](../img/bridge_requester.png)
 
-### Automatic Autocrafting
+### Autocrafting script
 
-This script automatically crafts items in a list.
-Do you want 500 glass in your me system at all times? Add glass to the list and the script will craft it for you.
-No need for level emitters or crafting cards!
+Here is a script to craft items, the computer will re-craft every item needed (a specified amount) in the RS system. Everything is adjustable.
 
-You can find instructions on how to install the script [here](https://github.com/SirEndii/Lua-Projects/tree/master)
+[Click here](https://gist.github.com/Seniorendi/26bd8ecaec400146f2e38790faceead8) to view the script
 
-![Automatic autocrafting example script preview](../img/me_bridge/autocraft_example.png)
-
-### ME Crafting CPUs
-
-This script shows you some statistics about the ME crafting cpus.
-
-You can find instructions on how to install the script [here](https://github.com/SirEndii/Lua-Projects/tree/master)
-
-![Me system crafting cpu example script preview](../img/me_bridge/mecpus_example.png)
+!!! bug
+    This script does not work on versions above 0.4b
 
 ---
 
 ## Changelog/Trivia
 
+**0.7.10b**  
+Ported RS Bridge to 1.18.1.
+Added `listCraftableItems` and `listCraftableFluids` back.
+
+**0.7.3r**  
+Added `getMaxItemDiskStorage`, `getMaxFluidDiskStorage`, `getMaxItemExternalStorage`, `getMaxFluidExternalStorage`, `getPattern` and `isItemCraftable`.
+Removed `listCraftableItems` and `listCraftableFluids`.
+
 **0.7r**  
-The ME Bridge does uses computercraft relative and cardinal directions.
+The RS Bridge does uses computercraft relative and cardinal directions.
 We also changed some function names.
 
 **0.4b**  
-Reworked the system of the ME Bridge, it now has more features and a new system for the `item` parameter.
+Reworked the system of the RS Bridge, it has now more features and a new system for the `item` parameter.
 
 **0.3.9b**  
 Added the `importItem` and `exportItem` from container functions.
 
-**0.3b**  
-Added the ME Bridge with a good amount of features.
+**0.3.6b**  
+Added the RS Bridge with a good amount of features.
