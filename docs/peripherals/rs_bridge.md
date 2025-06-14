@@ -2,16 +2,16 @@
 comments: true
 ---
 
-# ME Bridge
+# RS Bridge
 
 !!! picture inline end
-    ![!Image of the ME Bridge block](../img/previews/me_bridge.png){ align=right }
+    ![!Image of the RS Bridge block](../img/previews/rs_bridge.png){ align=right }
 
-The ME Bridge is able to interact with Applied Energistics 2.
-You can retrieve items, craft items, get all items as a list and more. The ME Bridge uses one channel.
+The RS Bridge is able to interact with Refined Storage.
+You can retrieve items, craft items, get all items as a list and more.
 
 !!! warning "Requirement"
-    Requires the [Applied Energistics 2](https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2) mod to be installed
+    Requires the [Refined Storage](https://www.curseforge.com/minecraft/mc-mods/refined-storage) mod to be installed
 
 <p class="picture-spacing" style="--ps:0.6rem;"></p>
 
@@ -21,14 +21,14 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
 
 | Peripheral Name | Interfaces with | Has events | Introduced in |
 | --------------- | --------------- | ---------- | ------------- |
-| meBridge        | ME System       | Yes        | 0.3b          |
+| rsBridge        | Refined Storage | No         | 0.3.6b        |
 
 </div>
 
 ---
 
 !!! failure
-    <center> <h3> You need to place the inventory/tank you want to use to export/import stuff next to the ME Bridge and **NOT** next to the computer! <h3> </center>
+    <center> <h3> You need to place the inventory/tank you want to use to export/import stuff next to the RS Bridge and **NOT** next to the computer! <h3> </center>
 
 === "1.20.1-0.7 and older"
 
@@ -82,15 +82,15 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
     
     Check the [fluid filters guide](/../guides/filters) for more info!
     
-    | fluid             | Description                                 |
+    | fluid            | Description                                 |
     | ---------------- | ------------------------------------------- |
-    | name: `string`   | The registry name of the fluid or a tag      |
-    | count: `number?` | The amount of the fluid to craft             |
-    | nbt: `string?`   | NBT to match the fluid on                    |
+    | name: `string`   | The registry name of the fluid or a tag     |
+    | count: `number?` | The amount of the fluid to craft            |
+    | nbt: `string?`   | NBT to match the fluid on                   |
     
     **OR**
     
-    | fluid                  | Description                                 |
+    | fluid                 | Description                                 |
     | --------------------- | ------------------------------------------- |
     | fingerprint: `string` | A unique fingerprint which identifies the<br>fluid to craft |
     | count: `number?`      | The amount of the fluid to craft      
@@ -373,7 +373,7 @@ You can retrieve items, craft items, get all items as a list and more. The ME Br
 
 ### Requester
 
-The requester is a successor for the old "Automatic Autocrafting" script which uses the old ME Bridge functions.
+The requester is a successor for the old "Autocrafting script" script which uses the old RS Bridge functions.
 It currently only works with AP on 1.21.1 or on 1.19.2 0.8 and supports both the ME and the RS Bridge at the same time.
 
 This script automatically schedules crafting jobs for pre-defined items, fluids and mekanism chemicals
@@ -384,37 +384,36 @@ You can find instructions on how to install the script [here](https://github.com
 
 ![Requester example script preview](../img/bridge_requester.png)
 
-### Automatic Autocrafting
+### Autocrafting script
 
-This script automatically crafts items in a list.
-Do you want 500 glass in your me system at all times? Add glass to the list and the script will craft it for you.
-No need for level emitters or crafting cards!
+Here is a script to craft items, the computer will re-craft every item needed (a specified amount) in the RS system. Everything is adjustable.
 
-You can find instructions on how to install the script [here](https://github.com/SirEndii/Lua-Projects/tree/master)
+[Click here](https://gist.github.com/Seniorendi/26bd8ecaec400146f2e38790faceead8) to view the script
 
-![Automatic autocrafting example script preview](../img/me_bridge/autocraft_example.png)
-
-### ME Crafting CPUs
-
-This script shows you some statistics about the ME crafting cpus.
-
-You can find instructions on how to install the script [here](https://github.com/SirEndii/Lua-Projects/tree/master)
-
-![Me system crafting cpu example script preview](../img/me_bridge/mecpus_example.png)
+!!! bug
+    This script does not work on versions above 0.4b
 
 ---
 
 ## Changelog/Trivia
 
+**0.7.10b**  
+Ported RS Bridge to 1.18.1.
+Added `listCraftableItems` and `listCraftableFluids` back.
+
+**0.7.3r**  
+Added `getMaxItemDiskStorage`, `getMaxFluidDiskStorage`, `getMaxItemExternalStorage`, `getMaxFluidExternalStorage`, `getPattern` and `isItemCraftable`.
+Removed `listCraftableItems` and `listCraftableFluids`.
+
 **0.7r**  
-The ME Bridge does uses computercraft relative and cardinal directions.
+The RS Bridge does uses computercraft relative and cardinal directions.
 We also changed some function names.
 
 **0.4b**  
-Reworked the system of the ME Bridge, it now has more features and a new system for the `item` parameter.
+Reworked the system of the RS Bridge, it has now more features and a new system for the `item` parameter.
 
 **0.3.9b**  
 Added the `importItem` and `exportItem` from container functions.
 
-**0.3b**  
-Added the ME Bridge with a good amount of features.
+**0.3.6b**  
+Added the RS Bridge with a good amount of features.
