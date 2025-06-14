@@ -388,7 +388,7 @@ You can find instructions on how to install the script [here](https://github.com
 
 Here is a script to craft items, the computer will re-craft every item needed (a specified amount) in the RS system. Everything is adjustable.
 
-[Click here](https://gist.github.com/Seniorendi/26bd8ecaec400146f2e38790faceead8) to view the script
+[Click here](https://gist.github.com/SirEndii/26bd8ecaec400146f2e38790faceead8) to view the script
 
 !!! bug
     This script does not work on versions above 0.4b

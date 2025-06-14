@@ -295,11 +295,11 @@ Olfi01 made another script to draw .nfp files, which you can draw with the paint
 
 First, we have a script with more adaptability. You can define x, y, width and height.
 
-Script 1: [Github](https://gist.github.com/Seniorendi/ce4971245b20fb031ca9b65ec4fcb4d0)
+Script 1: [Github](https://gist.github.com/SirEndii/ce4971245b20fb031ca9b65ec4fcb4d0)
 
 And we have another script which depends on the script above, but is simpler to use.
 
-Script 2: [Github](https://gist.github.com/Seniorendi/954e9888fac01efe8f23e82d0ae06e92)
+Script 2: [Github](https://gist.github.com/SirEndii/954e9888fac01efe8f23e82d0ae06e92)
 
 ---
 
